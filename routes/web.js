@@ -1,9 +1,10 @@
-const router = require('express').Router();
-const homepageController = require('../controllers/HomepageController');
-const tasksController = require('../controllers/TasksController');
-
-router.get('/', homepageController.index);
-
-router.post('/tasks', tasksController.store);
+const router = require("express").Router();
+//const homepageController = require('../controllers/HomepageController');
+//const tasksController = require('../controllers/TasksController');
+const urlController = require("../controllers/UrlsController");
+//router.get('/', homepageController.index);
+router.get("/", urlController.all);
+router.get("/:hash", urlController.getById);
+router.post("/", urlController.store);
 
 module.exports = router;
