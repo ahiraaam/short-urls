@@ -1,7 +1,7 @@
 <main role="main" class="container">
   <div class="row">
     <div class="col-12">
-      <h1>TODO List</h1>
+      <h1>Short Url</h1>
     </div>
   </div>
   <div class="row">
@@ -22,7 +22,7 @@
       <div id="{{id}}" class="card my-3 {{#eq status 'done' }}bg-light{{/eq}}">
         <div class="card-body">
           <p class="card-text">URL Original : {{ url }}</p>
-          <p>Url corta: <a href="http://localhost:3000/{{hash}}">http://localhost:3000/{{hash}}</a></p>
+          <p>Url corta: <a href={{shortUrl}}>{{shortUrl}}</a></p>
         </div>
       </div>
       {{/each}}
