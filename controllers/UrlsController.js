@@ -24,12 +24,25 @@ exports.getById = async (req, res) => {
   const isPlus = finalLetter.charAt(finalLetter.length - 1);
   if (isPlus == "+") {
     console.log("ES MAAAS");
-    return res.redirect("/");
+    return res.redirect(`/${hash}/estadisticas`);
   } else {
     console.log("HASH", hash);
     Url.findHash(hash).then((item) => {
       console.log(item);
+      Url.changeCounter(item).then((id) => {
+        console.log(id);
+      });
       return res.redirect(item.url);
     });
   }
+};
+
+exports.estadisticas = async (req, res) => {
+  const hash = req.params.hash;
+  console.log("HASH", hash);
+  Url.findHash(hash.slice(0, -1)).then((item) => {
+    console.log(item);
+
+    res.render("homepage/estadisticas", { item: item });
+  });
 };
